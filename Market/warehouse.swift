@@ -1,8 +1,18 @@
-//
-//  warehouse.swift
-//  Market
-//
-//  Created by Андрей on 18.11.2025.
-//
-
 import Foundation
+
+struct Warehouse {
+    private(set) var products: [UUID : Product] = [:]
+    
+    func product(with id: UUID) -> Product? {
+        return products[id]
+    }
+    
+    func quantity(for id: UUID) -> Int? {
+        return products[id]?.quantity
+    }
+    
+    mutating func addProduct(_ product: Product) {
+        products[product.id] = product
+    }
+    
+}
