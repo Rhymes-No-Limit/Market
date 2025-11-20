@@ -15,4 +15,10 @@ struct Warehouse {
         products[product.id] = product
     }
     
+    mutating func updateQuantity(for id: UUID, by amount: Int) {
+        guard var product = products[id] else { return }
+        product.changeQuantity(by: amount)
+        products[id] = product
+    }
+    
 }

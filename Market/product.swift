@@ -3,7 +3,10 @@ import Foundation
 struct Product {
     let id: UUID
     let name: String
-    var price: Double
+    let price: Double
     var quantity: Int
     
+    mutating func changeQuantity(by quantity: Int) {
+        self.quantity += quantity
+    }
 }
