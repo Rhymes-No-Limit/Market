@@ -1,6 +1,6 @@
 import Foundation
 
-struct Warehouse {
+final class Warehouse {
     private(set) var products: [UUID : Product] = [:]
     
     func product(with id: UUID) -> Product? {
@@ -11,11 +11,11 @@ struct Warehouse {
         return products[id]?.quantity
     }
     
-    mutating func addProduct(_ product: Product) {
+    func addProduct(_ product: Product) {
         products[product.id] = product
     }
     
-    mutating func updateQuantity(for id: UUID, by amount: Int) {
+    func updateQuantity(for id: UUID, by amount: Int) {
         guard var product = products[id] else {
             print("Product not found.")
             return }
@@ -24,8 +24,9 @@ struct Warehouse {
         if product.quantity <= 0 {
             products.removeValue(forKey: id)
             print("Product \(product.name) removed from warehouse - quantity reached 0.")
+        } else {
+            products[id] = product
         }
-        products[id] = product
     }
     
 }

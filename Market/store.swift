@@ -12,7 +12,7 @@ final class Store {
     //Минимальные методы: показать товары, купить товар, проверить количество
     func showProducts() {
         for product in productInWarehouse {
-            print("Store has: \(product.name) - \(product.quantity) count")
+            print("Store has: \(product.name) - \(product.quantity) count and price: \(product.price)")
         }
     }
     
