@@ -16,8 +16,15 @@ struct Warehouse {
     }
     
     mutating func updateQuantity(for id: UUID, by amount: Int) {
-        guard var product = products[id] else { return }
+        guard var product = products[id] else {
+            print("Product not found.")
+            return }
         product.changeQuantity(by: amount)
+        
+        if product.quantity <= 0 {
+            products.removeValue(forKey: id)
+            print("Product \(product.name) removed from warehouse - quantity reached 0.")
+        }
         products[id] = product
     }
     

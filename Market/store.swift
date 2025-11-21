@@ -17,7 +17,7 @@ final class Store {
     }
     
     func buyProduct(id: UUID, quantity: Int) {
-        warehouse.updateQuantity(for: id, by: quantity)
+        warehouse.updateQuantity(for: id, by: -quantity)
     }
     
 }
